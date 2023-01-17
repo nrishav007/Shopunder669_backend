@@ -72,8 +72,8 @@ app.post("/signup", async (req, res) => {
       res.status(404).send({ msg: "Failed to login" });
     }
   });
-  app.use(auth);
   app.use("/product",product);
+  app.use(auth);
 app.listen(port,()=>{
     try {
         database_connection;
