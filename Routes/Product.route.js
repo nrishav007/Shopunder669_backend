@@ -43,7 +43,7 @@ product.post("/create", async (req, res) => {
   product.patch("/update/:userID", async (req, res) => {
     try {
       const userID = req.params.userID;
-      await ProductModel.findByIdAndUpdate({_id:userID}, req.body);
+      await ProductModel.findOneAndUpdate({id:userID}, req.body);
       res.status(200).send({ msg: "Product Modified" });
     } catch (e) {
       console.log(e);
@@ -54,7 +54,7 @@ product.post("/create", async (req, res) => {
   product.delete("/delete/:userID", async (req, res) => {
       try {
         const userID = req.params.userID;
-        await ProductModel.findByIdAndDelete(userID);
+        await ProductModel.findOneAndDelete({id:userID})
         res.status(200).send({ msg: "Product deleted" });
       } catch (e) {
         console.log(e);
