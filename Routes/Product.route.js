@@ -15,7 +15,7 @@ product.get("/:category",async(req,res)=>{
 
 product.get("/single/:id",async(req,res)=>{
   const ids=req.params.id;
-  const data=await ProductModel.findOne({product_id:ids});
+  const data=await ProductModel.findOne({id:ids});
   res.send(data);
 });
 
