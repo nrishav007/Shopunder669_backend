@@ -4,7 +4,8 @@ const product=express.Router();
 product.use(express.json());
 
 product.get("/",async(req,res)=>{
-    res.send(await ProductModel.find());
+  let val=req.query.search;
+    res.send(await ProductModel.find({category:val}));
 });
 
 product.get("/:category",async(req,res)=>{
