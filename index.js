@@ -10,6 +10,7 @@ const port=process.env.PORT || 3400;
 const cors=require("cors");
 const user = require("./Routes/User.route");
 const product = require("./Routes/Product.route");
+const cart = require("./Routes/Cart.route");
 const {auth} = require("./Middlewares/Auth.middleware");
 app.use(express.json());
 app.use(cors({
@@ -74,6 +75,7 @@ app.post("/signup", async (req, res) => {
   });
   app.use("/product",product);
   app.use(auth);
+  app.use("/cart",cart);
 app.listen(port,()=>{
     try {
         database_connection;
