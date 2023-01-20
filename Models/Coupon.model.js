@@ -1,6 +1,6 @@
 const mongoose=require("mongoose");
 const CouponSchema=mongoose.Schema({
-    Couponcode:String,
+    couponcode:String,
     discount:Number,
     minimumPurchase:Number
 });
