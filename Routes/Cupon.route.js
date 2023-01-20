@@ -1,42 +1,42 @@
 const express=require("express");
-const CuponModel = require("../Models/Cupon.model");
-const Cupon=express.Router();
-Cupon.use(express.json());
+const CouponModel = require("../Models/Coupon.model");
+const Coupon=express.Router();
+Coupon.use(express.json());
 
-Cupon.get("/",async(req,res)=>{
-    res.send(await CuponModel.find());
+Coupon.get("/",async(req,res)=>{
+    res.send(await CouponModel.find());
 });
 
-Cupon.post("/create", async (req, res) => {
+Coupon.post("/create", async (req, res) => {
     try {
-      await CuponModel.create(req.body);
-      res.status(200).send({ msg: "Cupon Added" });
+      await CouponModel.create(req.body);
+      res.status(200).send({ msg: "Coupon Added" });
     } catch (e) {
       console.log(e);
       res.status(400).send({ msg: "Not Found" });
     }
   });
   
-  Cupon.patch("/update/:userID", async (req, res) => {
+  Coupon.patch("/update/:userID", async (req, res) => {
     try {
       const userID = req.params.userID;
-      await CuponModel.findOneAndUpdate({id:userID}, req.body);
-      res.status(200).send({ msg: "Cupon Modified" });
+      await CouponModel.findOneAndUpdate({id:userID}, req.body);
+      res.status(200).send({ msg: "Coupon Modified" });
     } catch (e) {
       console.log(e);
       res.status(400).send({ msg: "Not Found" });
     }
   });
   
-  Cupon.delete("/delete/:userID", async (req, res) => {
+  Coupon.delete("/delete/:userID", async (req, res) => {
       try {
         const userID = req.params.userID;
-        await CuponModel.findOneAndDelete({_id:userID})
-        res.status(200).send({ msg: "Cupon deleted" });
+        await CouponModel.findOneAndDelete({_id:userID})
+        res.status(200).send({ msg: "Coupon deleted" });
       } catch (e) {
         console.log(e);
         res.status(400).send({ msg: "Not Found" });
       }
     });
 
-module.exports=Cupon;
+module.exports=Coupon;
