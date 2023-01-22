@@ -8,6 +8,10 @@ product.get("/",async(req,res)=>{
     res.send(await ProductModel.find({category:val}));
 });
 
+product.get("/all",async(req,res)=>{
+    res.send(await ProductModel.find());
+});
+
 product.get("/:category",async(req,res)=>{
   const ids=req.params.category;
   const data=await ProductModel.find({category:ids});
