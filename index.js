@@ -13,6 +13,7 @@ const product = require("./Routes/Product.route");
 const cart = require("./Routes/Cart.route");
 const {auth} = require("./Middlewares/Auth.middleware");
 const Coupon = require("./Routes/Coupon.route");
+const Category = require("./Routes/Category.route");
 app.use(express.json());
 app.use(cors({
   origin:"*"
@@ -76,6 +77,7 @@ app.post("/signup", async (req, res) => {
   });
   app.use("/product",product);
   app.use("/coupon",Coupon);
+  app.use("/category",Category);
   app.use(auth);
   app.use("/cart",cart);
 app.listen(port,()=>{
