@@ -55,7 +55,17 @@ product.post("/create", async (req, res) => {
       res.status(400).send({ msg: "Not Found" });
     }
   });
-  
+  product.patch("/review/:userID", async (req, res) => {
+    try {
+      const userID = req.params.userID;
+      pyld=req.body.reviews
+      await ProductModel.findByIdAndUpdate(userID,pyld);
+      res.status(200).send({ msg: "Review Modified" });
+    } catch (e) {
+      console.log(e);
+      res.status(400).send({ msg: "Not Found" });
+    }
+  });
   product.delete("/delete/:userID", async (req, res) => {
       try {
         const userID = req.params.userID;
