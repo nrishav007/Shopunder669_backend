@@ -20,7 +20,7 @@ product.get("/:category",async(req,res)=>{
 
 product.get("/single/:id",async(req,res)=>{
   const ids=req.params.id;
-  const data=await ProductModel.find({_id:ids});
+  const data=await ProductModel.findOne({_id:ids});
   res.send(data);
 });
 
