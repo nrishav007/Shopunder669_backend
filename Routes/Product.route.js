@@ -58,7 +58,7 @@ product.post("/create", async (req, res) => {
   product.patch("/review/:userID", async (req, res) => {
     try {
       const userID = req.params.userID;
-      pyld=req.body.reviews
+      pyld=req.body.rv;
       await ProductModel.findByIdAndUpdate(userID,pyld);
       res.status(200).send({ msg: "Review Modified" });
     } catch (e) {
