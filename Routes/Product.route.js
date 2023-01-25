@@ -69,7 +69,7 @@ product.post("/create", async (req, res) => {
   product.delete("/delete/:userID", async (req, res) => {
       try {
         const userID = req.params.userID;
-        await ProductModel.findOneAndDelete({id:userID})
+        await ProductModel.findOneAndDelete({_id:userID})
         res.status(200).send({ msg: "Product deleted" });
       } catch (e) {
         console.log(e);
