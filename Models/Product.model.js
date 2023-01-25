@@ -5,7 +5,7 @@ const ProductSchema=mongoose.Schema({
     category:String,
     description:String,
     price:Number,
-    offer_price:Number,
+    offerPrice:Number,
     review:Array
 });
 const ProductModel=mongoose.model("shop669prod",ProductSchema);
