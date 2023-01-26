@@ -18,7 +18,6 @@ app.use(express.json());
 app.use(cors({
   origin:"*"
 }));
-app.use("/user",user);
 app.get("/",(req,res)=>{
 res.send("Backend is deployed")
 })
@@ -80,6 +79,7 @@ app.post("/signup", async (req, res) => {
   app.use("/category",Category);
   app.use(auth);
   app.use("/cart",cart);
+  app.use("/user",user);
 app.listen(port,()=>{
     try {
         database_connection;
