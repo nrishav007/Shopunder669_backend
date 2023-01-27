@@ -4,8 +4,19 @@ const placed=express.Router();
 placed.use(express.json());
 
 placed.get("/",async(req,res)=>{
-  let val=req.query.search;
-    res.send(await PlacedModel.find({category:val}));
+  let val=req.body.userID;
+    res.send(await PlacedModel.find({userID:val}));
+});
+placed.get("/todaysorder",async(req,res)=>{
+  const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let current = `${day}-${month}-${year}`;
+    res.send(await PlacedModel.find({orderdate:current}));
+});
+placed.get("/allorder",async(req,res)=>{
+    res.send(await PlacedModel.find());
 });
 
 placed.post("/create", async (req, res) => {
