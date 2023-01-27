@@ -10,7 +10,8 @@ const ProductSchema = mongoose.Schema({
   email: String,
   name: String,
   cartdata: Array,
-  price:String
+  price:String,
+  userID:String
 });
 const PlacedModel = mongoose.model("shop669order", ProductSchema);
 module.exports = PlacedModel;
