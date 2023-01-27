@@ -26,6 +26,21 @@ cart.get("/", async (req, res) => {
       try {
         const userID = req.params.userID;
         await CartModel.findByIdAndDelete(userID);
+        res.status(200).send({ msg: "Product Removed" });
+      } catch (e) {
+        console.log(e);
+        res.status(400).send({ msg: "Not Found" });
+      }
+    });
+
+    cart.delete("/alldelete", async (req, res) => {
+      try {
+        const userID = req.body.userID;
+        const val=await CartModel.find({userID:userID});
+        for(let i=0;i<val.length;i++){
+          let pid=val[i]._id;
+          await CartModel.findByIdAndDelete(pid);
+        }
         res.status(200).send({ msg: "Cart Deleted" });
       } catch (e) {
         console.log(e);
